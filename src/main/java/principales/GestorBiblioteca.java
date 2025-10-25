@@ -1,22 +1,26 @@
 package principales;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.Statement;
+
+
 
 import conexiones.MySQLConnection;
 
-public class GestorBibilioteca {
-    private final boolean crear;
-    public GestorBibilioteca(boolean crear){
-        this.crear=crear;
+public class GestorBiblioteca {
+    private final boolean reemplazar;
+    public GestorBiblioteca(boolean reemplazar){
+        this.reemplazar=reemplazar;
 
     }
-    void createDataBase(String DB){
-        MySQLConnection mySQLConnection= new MySQLConnection();
-        try (Connection connection= mySQLConnection.getConnection();
+    void creacionBD(String DB){
+        MySQLConnection mysqlConnection= new MySQLConnection();
+        try (
+            Connection connection=mysqlConnection.getConnection() ;
              Statement stmt= connection.createStatement()) {
 
-                if (crear) {
+                if (reemplazar) {
                     stmt.executeUpdate("DROP DATABASE IF EXISTS "+DB);
                     System.out.println("Base de datos borrada");
 

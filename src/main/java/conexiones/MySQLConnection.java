@@ -7,10 +7,10 @@ import java.sql.SQLException;
 public class MySQLConnection implements DBConnection {
       private String URL="";
       private static final String USERNAME="usuario";
-      private static final String PASSWORD="usuario23";
+      private static final String PASSWORD="usuario123";
 
    public MySQLConnection(){
-     this.URL="jdbc:mysql//localhost:3306/";
+     this.URL="jdbc:mysql://localhost:3306/";
    }
 
     @Override
