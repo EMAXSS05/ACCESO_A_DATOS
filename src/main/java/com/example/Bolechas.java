@@ -13,12 +13,13 @@ public class Bolechas {
 
 
     void crearBd(String BD){
+         MySQLConnection mySQLConnection= new MySQLConnection();
     try {
-    MySQLConnection mySQLConnection= new MySQLConnection();
+   
     Connection conn= mySQLConnection.getConnection();
     Statement stmt=conn.createStatement();
     if (reemplazar) {
-        stmt.executeUpdate("Drop database "+BD);
+        stmt.executeUpdate("Drop database IF EXISTS "+ BD);
         stmt.executeUpdate("CREATE DATABASE "+BD);
 
     }

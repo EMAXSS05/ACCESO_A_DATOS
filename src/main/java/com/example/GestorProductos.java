@@ -14,8 +14,12 @@ public class GestorProductos {
         "Descripcion varchar(35),\n"+
         "Nombre varchar(20) not null,\n"+
         "Precio float not null,\n"+
-        "primary key(ID)),\n"
+        "ID_Pedido int not null,\n"+
+        "Cantidad int not null,\n"+
+        "primary key(ID),\n"+
+        "constraint fk_pedido_producto foreign key(ID_Pedido) references Pedido(ID) ON UPDATE CASCADE ON DELETE CASCADE)"
         );
+        
      } catch (Exception e) {
         System.out.println("Error al crear la tabla Producto");
      }
