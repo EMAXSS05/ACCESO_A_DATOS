@@ -33,6 +33,12 @@
      <artifactId>mysql-connector-j</artifactId>
      <version>9.0.0</version>
    </dependency>
+   <!--MARIA DB-->
+   <dependency>
+      <groupId>org.mariadb.jdbc</groupId>
+      <artifactId>mariadb-java-client</artifactId>
+      <version>3.1.4</version> <!-- Reemplaza con la versión deseada -->
+    </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>

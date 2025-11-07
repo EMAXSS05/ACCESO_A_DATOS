@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public final class Principal {
 
-    static String BD = "Bolechas";
+    static String BD = "MariaDB_Bolechas";
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -45,7 +45,7 @@ public final class Principal {
                 case 2:
                     System.out.println("Creando tablas...");
                     try {
-                        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + BD, "root",
+                        Connection conn = DriverManager.getConnection("jdbc:mariadb://localhost:3307/" + BD, "root",
                                 "root");
                         GestorClientes cliente = new GestorClientes(conn);
                         System.out.println("Se creó la tabla Cliente");
@@ -62,7 +62,7 @@ public final class Principal {
 
                 case 3:
                     try {
-                        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + BD, "root",
+                        Connection conn = DriverManager.getConnection("jdbc:mariadb://localhost:3307/" + BD, "root",
                                 "root");
                         System.out.println("Inserte un nro de dni: ");
                         String dni = sc.nextLine();
@@ -78,7 +78,7 @@ public final class Principal {
 
                 case 4:
                     try {
-                        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + BD, "root",
+                        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/" + BD, "root",
                                 "root");
                         System.out.println("Introduzca el nombre a remplazar: ");
                         String nombre_antiguo = sc.nextLine();
@@ -94,7 +94,7 @@ public final class Principal {
                 case 5:
 
                     try {
-                        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + BD, "root",
+                        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/" + BD, "root",
                                 "root");
                         System.out.println("Introduzca el dni del cliente a eliminar: ");
                         String dni = sc.nextLine();
@@ -108,7 +108,7 @@ public final class Principal {
 
                 case 6:
                     try {
-                        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + BD, "root",
+                        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/" + BD, "root",
                                 "root");
                         GestorProductos productos = new GestorProductos(conn);
                         System.out.println("Ingrese el id del producto: ");
@@ -133,7 +133,7 @@ public final class Principal {
 
                 case 7:
                     try {
-                        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + BD, "root",
+                        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/" + BD, "root",
                                 "root");
                         Pedido pedido = new Pedido(conn);
                         String fechaString = "24-04-2023";
@@ -145,6 +145,15 @@ public final class Principal {
                         System.out.println("No se pudo insertar el pedido");
                     }
                     break;
+                case 8:
+
+                try {
+                    Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3307/" + BD, "root","root");
+                    Pedido pedido= new Pedido(conn);
+                    pedido.consultarPedido();
+                } catch (Exception e) {
+                    System.out.println("Error al consultar la informacion del pedido");
+                }
 
             }
         }

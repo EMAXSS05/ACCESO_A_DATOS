@@ -55,13 +55,20 @@ public class Pedido {
      * ▪ El precio total del pedido
      */
 
-    void consultarFechaPedido() {
+    void consultarPedido() {
         try {
             Statement stmt = conn.createStatement();
             
-            ResultSet result= stmt.executeQuery("select Fecha, Producto.ID,Producto.Nombre, Producto.Cantidad* Producto.Precio as PrecioTotal from Pedido join Pedido ON ID=Producto.ID");
-            while (condition) {
-                
+            ResultSet result= stmt.executeQuery("SELECT  Fecha, Producto.ID as idProducto,Producto.Nombre as nombreProducto, (Producto.Cantidad* Producto.Precio) as PrecioTotal \n" +
+                                "from Pedido join Producto\n" +
+                                "ON Pedido.ID=Producto.ID");
+            while (result.next()) {
+                System.out.println("----Pedido----");
+                System.out.println("Fecha: " + result.getString("Fecha"));
+                System.out.println("ID Producto: "+result.getInt("idProducto"));
+                System.out.println("Nombre Producto: "+result.getString("nombreProducto"));
+                System.out.println("Precio total: "+result.getInt("PrecioTotal"));
+
             }
         } catch (Exception e) {
             System.out.println("No se pudo consultar la informacion");

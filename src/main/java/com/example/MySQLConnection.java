@@ -15,10 +15,11 @@ public class MySQLConnection implements DBConnection {
       
     @Override
     public Connection getConnection() {
-         URL="jdbc:mysql://localhost:3306/";
+         URL="jdbc:mariadb://localhost:3307/";
         try {
            return DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (SQLException e) {
+            System.out.println("No se pudo conectar");
             return null;
         }
 
